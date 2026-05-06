@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: hsl(0, 0%, 12%);
+  color: hsl(0, 0%, 100%);
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.teamSelect {
+  display: flex;
+  justify-content: space-around;
+}
+
+.teamSelect button {
+ margin: 10px;
+ padding: 15px 25px;
+ font-size: 1rem;
+ border: none;
+ border-radius: 10px;
+ cursor: pointer;
+ background: hsl(59, 98%, 59%);
+ color: hsl(0, 100%, 1%);
+ font-weight: bold;
+ transition: 0.2s;
+}
+
+.teamSelect button:hover {
+  background: hsl(59, 98%, 39%);
+}
+
+/* Hero Select Screen */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 0%, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: hsl(0, 0%, 17%);
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  background: hsl(60, 100%, 96%);
+}
+
+.modalContent h2 {
+  color: black;
+}
+
+.modalContent input {
+  background: hsl(0, 0%, 27%);
+  color: white;
+}
+
+.modalContent input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+.heroList {
+  max-height: 200px;
+  overflow-y: auto;
+  background: hsl(0, 0%, 27%);
+}
+
+.heroItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid hsl(0, 0%, 27%);
+}
+
+.heroItem button {
+  background: hsl(122, 85%, 55%);
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.closeBtn {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  background: hsl(59, 98%, 59%);
+  box-shadow: 0px 1px 0px 0px hsl(59, 98%, 29%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.closeBtn:hover {
+  background: hsl(59, 98%, 39%);
+}
+
+/* Selected Heroes Section */
+
+.currCompContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.teamBox {
+  background: hsl(60, 100%, 96%);
+  color: black;
+  padding: 15px;
+  border-radius: 12px;
+  width: 40%;
+}
+
+.pickedHero {
+  display: flex;
+  justify-content: space-between;
+  background-color: hsla(120, 1%, 22%, 0.8);
+  color: white;
+  padding: 8px;
+  border-bottom: 1px solid hsl(0, 0%, 27%);
+}
+
+.pickedHero button {
+  background-color: hsl(0, 100%, 50%);
+  border: none;
+  border-radius: 6px;
+  padding: 2px 8px;
+  cursor: pointer;
+}

@@ -67,7 +67,7 @@ const removeHero = (hero, team) => {
             placeholder="Search hero..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-          />
+            />
 
           <div className="heroList">
             {filteredHeroes.map((hero) => (
