@@ -2,22 +2,12 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { heroes } from './data/heroes.js'
+import TeamBox from './components/TeamBox.jsx'
 
-const heroes = [
-    "Adam Warlock",
-    "Angela",
-    "Black Panther",
-    "Black Widow",
-    "Captain America",
-    "Doctor Strange",
-    "Hulk",
-    "Iron Man",
-    "Scarlet Witch",
-    "Spider-Man",
-    "Storm",
-    "Thor",
-    "Wolverine",
-  ];
+const getHeroById = (id) => {
+  return heroes.find((hero) => hero.id === id)
+};
 
 function App() {
 
@@ -26,15 +16,15 @@ function App() {
   const [yourTeam, setYourTeam] = useState([]);
   const [enemyTeam, setEnemyTeam] = useState([]);
 
-  const filteredHeroes = heroes.filter((h) => 
-    h.toLowerCase().includes(search.toLowerCase())
+  const filteredHeroes = heroes.filter((hero) => 
+    hero.name.toLowerCase().includes(search.toLowerCase())
 );
 
-const addHero = (hero) => {
+const addHero = (heroId) => {
   if(activeTeam === "your") {
-    if (!yourTeam.includes(hero)) setYourTeam([...yourTeam, hero]);
+    if (!yourTeam.includes(heroId)) setYourTeam([...yourTeam, heroId]);
   } else if(activeTeam === "enemy") {
-    if (!enemyTeam.includes(hero)) setEnemyTeam([...enemyTeam, hero]);
+    if (!enemyTeam.includes(heroId)) setEnemyTeam([...enemyTeam, heroId]);
   }
 };
 
@@ -71,9 +61,9 @@ const removeHero = (hero, team) => {
 
           <div className="heroList">
             {filteredHeroes.map((hero) => (
-              <div key={hero} className="heroItem">
-                <span>{hero}</span>
-                <button onClick={() => addHero(hero)}>+</button>
+              <div key={hero.id} className="heroItem">
+                <span>{hero.name}</span>
+                <button onClick={() => addHero(hero.id)}>+</button>
               </div>
             ))}
           </div>
@@ -87,25 +77,18 @@ const removeHero = (hero, team) => {
 
       {/* CURRENT COMPOSITION */}
       <div className="currCompContainer">
-        <div className="teamBox">
-          <h2>YOUR TEAM</h2>
-          {yourTeam.map((hero) => (
-            <div key={hero} className="pickedHero">
-              <span>{hero}</span>
-              <button onClick={() => removeHero(hero, "your")}>x</button>
-            </div>
-          ))}
-        </div>
-
-        <div className="teamBox">
-          <h2>ENEMY TEAM</h2>
-          {enemyTeam.map((hero) => (
-            <div key={hero} className="pickedHero">
-              <span>{hero}</span>
-              <button onClick={() => removeHero(hero, "enemy")}>x</button>
-            </div>
-          ))}
-        </div>
+        <TeamBox
+          title='YOUR TEAM'
+          team={yourTeam}
+          removeHero={removeHero}
+          getHeroById={getHeroById}
+        />
+        <TeamBox
+          title='ENEMY TEAM'
+          team={enemyTeam}
+          removeHero={removeHero}
+          getHeroById={getHeroById}
+        />
       </div>
     </div>
   );
